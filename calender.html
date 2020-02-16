@@ -7,26 +7,11 @@
             box-sizing: border-box;
         }
 
-        ul {
-            list-style-type: none;
-        }
-
-        body {
-            font-family: "Lato", sans-serif;
-        }
-
-        * {
-            margin: 0;
-            box-sizing: border-box;
-        }
-
-
         .calendar {
             margin: auto;
             width: 600px;
-            background-color: #999;
+            background-color:rgb(0, 255, 128);
             box-shadow: 0px 0px 15px 4px rgba(0, 0, 0, 0.2);
-       
         }
 
         .month {
@@ -67,12 +52,11 @@
         }
 
         .prev_date {
-            color: #999;
+            color: rgb(0, 255, 128);
         }
 
         .today {
-            background-color: #d7f81c;
-            color: #fff;
+           
         }
 
         .days div:hover {
@@ -90,19 +74,30 @@
             border-radius: 50%;
             font-size: 23px;
             background-color: rgba(0, 0, 0, 0.1);
-            transition: all 0.4s;
+            
         }
 
         .prev:hover,
         .next:hover {
             cursor: pointer;
-            background-color: rgba(0, 0, 0, 0.2);
+
         }
 
-        #month {
-            font-size: 30px;
-            font-weight: 500;
+        .eventhead{
+            background-color: #ffee00;
+            color: #fa1c1c;
+            padding: 100px 10;
+            display: flex;
+            text-align: center;
         }
+        .evecont{
+     
+            
+            background-color:white;
+            box-shadow: 0px 0px 15px 4px rgba(0, 0, 0, 0.2);
+        }
+
+    
     </style>
 </head>
 
@@ -114,7 +109,7 @@
             </div>
             <div>
                 <h2 id="month"></h2>
-                <p id="date_str"></p>
+                <p id="date_string"></p>
             </div>
             <div class="next" onclick="prevnextDate('next')">
                 <span>&#10095;</span>
@@ -129,21 +124,39 @@
             <div>Fri</div>
             <div>Sat</div>
         </div>
-        <div class="days">
+    
+            <input type="text" name="yes" id="t1">
+            <button onclick="events()">Add</button>
+           
+            <div class="days">
+                
+            </div>
 
+            <div class ="eventhead">
+                <label> Upcoming Events</label>
+            </div>
+
+            <div class="evecont">
+                <div class="evecont"> Dog therapy February 19 2020</div>
+                <div class="evecont"> Pizza party February 24 2020</div>
+                <div class="evecont"> Dog therapy February 28 2020</div>
+                <div class="evecont"> Dog therapy March 6 2020</div>
+
+            </div>
+ 
         </div>
     </div>
 
     <script>
         var d = new Date();
         var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ]
-        var number = "";
         
-        function changeDate() {
-            
+
+        function changeDate(){
+           
             var day = d.getDay();
             var todaynow = new Date();
-            var endDate = new Date(
+            var nextDate = new Date(
                 d.getFullYear(),
                 d.getMonth() + 1,
                 0
@@ -154,26 +167,53 @@
                 d.getMonth(),
                 0
             ).getDate();
-            document.getElementById("month").innerHTML = months[d.getMonth()];
-            document.getElementById("date_str").innerHTML = d.toString();
             
-           
-            for (i = 1; i <= endDate; i++) {
-                if (i == todaynow.getDate() && d.getMonth() == todaynow.getMonth()) number += "<div class='today'>" + i + "</div>";
-                else
-                    number += "<div>" + i + "</div>";
+
+            var dates =["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"]
+            
+            var five = "5";
+
+            var number = "";
+            var eventsss = "";
+            
+            for (x = day; x > 0; x--) {
+                number += "<div class='prev_date'>" + (prevDate - x + 1) + "</div>";
             }
+
+            for (i = 0; i <= nextDate-1; i++){
+                if (i == todaynow.getDate() && d.getMonth() == todaynow.getMonth()) 
+                    number += "<div class='today'>" + dates[i] + "</div>";
+                    
+                else   
+                    
+                    number += "<div>" + dates[i] + "</div>";
+            
+            }
+            //for (i = 1; i <= nextDate; i++){
+             //   if (i == todaynow.getDate() && d.getMonth() == todaynow.getMonth()) 
+              //      number += "<div class='today'>" + i + "</div>";
+                //    eventsss += "<div class='today'>" + i + "</div>";
+                //else
+                 //   number += "<div>" + i + "</div>";
+                  //  eventsss += "<div>" + i + "</div>";
+            //}
+                        
             document.getElementsByClassName("days")[0].innerHTML = number;
+            document.getElementById("month").innerHTML = months[d.getMonth()];
+            document.getElementById("date_string").innerHTML = d.toString();
 
         }
 
-        function prevnextDate(date) {
-            if(date == "prev") {
+        function prevnextDate(date){
+            if(date == "prev"){
                 d.setMonth(d.getMonth() - 1);
-            } else if(date == 'next') {
+            } else if(date == "next"){
                 d.setMonth(d.getMonth() + 1);
             }
             changeDate();
+        }
+
+        function events(eve){
         }
     </script>
 </body>
