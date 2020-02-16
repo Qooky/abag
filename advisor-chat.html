@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<style>
+
+body {
+    background-color: rgb(228, 228, 228);
+}
+
+.message {
+    background-color: #401fd1;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 10px 0;
+    color: black;
+  }
+  
+.user {
+    background-color: rgb(194, 38, 38);
+}
+
+.reply {
+  background-color: rgb(255, 152, 25);
+}
+  
+.message::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+  
+.message img {
+    float: left;
+    max-width: 60px;
+    width: 100%;
+    margin-right: 20px;
+    border-radius: 50%;
+}
+  
+.message img.right {
+    float: right;
+    margin-left: 20px;
+    margin-right:0;
+}
+
+.time-right {
+    float: right;
+    color: rgb(0, 0, 0);
+}
+
+.time-left {
+    float: left;
+    color: rgb(0, 0, 0);
+}
+
+.entry {
+    float: left;
+    font-size: 14pt;
+}
+
+.entry textarea {
+    background-color: grey;
+    padding-left: 4px;
+}
+
+.btn {
+    border: 2px solid black;
+    background-color: white;
+    color: black;
+    padding: 14px 28px;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.send {
+    border-color: rgb(194, 38, 38);
+    color:rgb(194, 38, 38);
+    margin-left: 4px;
+}
+
+.reset {
+    border-color:  rgb(255, 152, 25);
+    color: rgb(255, 152, 25);
+    margin-left: 4px;
+}
+
+.send:hover {
+    background-color: rgb(194, 38, 38);
+    color: white;
+}
+
+.reset:hover {
+    background-color: rgb(255, 152, 25);
+    color: white;
+}
+
+.box {
+    display: flex;
+    position: fixed;
+    bottom: 30px;
+}
+
+.entry label {
+    padding: 4px;
+    color: rgb(0, 0, 0);
+}
+
+.topnav {
+    background-color: rgb(0, 0, 0);
+    overflow: hidden;
+}
+  
+.topnav a {
+    float: left;
+    color: #f2f2f2;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+  
+.topnav a.active {
+    background-color: #ff8243;
+    color: white;
+}
+
+</style>
+
+<div class="topnav">
+    <a href="#home">Announcements</a>
+    <a href="#get help">Talk To an Advisor</a>
+    <a class="active" href="#community">Support Groups</a>
+    <a href="#contact">Resources</a>
+    <a href="#events">Calendar</a>
+    <a href="#learn more">About</a>
+    <a href="#virtual friends">Pals</a>
+  </div>
+
+<div id="msg1" class="message user" style="display:none">
+    <img src="./images/student.jpg" alt="Avatar" class="right">
+    <p>Hi, I've been feeling really down lately and could really use someone to talk to</p>
+    <span class="time-right">7:58</span>
+</div>
+      
+<div id="msg2" class="message reply" style="display:none">
+    <img src="./images/adv.jpg" alt="Avatar">
+    <p>Absolutely, what's been on your mind lately?</p>
+    <span class="time-left">7:59</span>
+</div>
+
+<div id="msg3" class="message user" style="display:none">
+    <img src="./images/student.jpg" alt="Avatar" class="right">
+    <p>School has just been really overwhelming lately</p>
+    <span class="time-left">8:00</span>
+</div>
+
+<div id="msg4" class="message user" style="display:none">
+    <img src="./images/student.jpg" alt="Avatar" class="right">
+    <p>I'm not really getting along with my friends either</p>
+    <span class="time-left">8:00</span>
+</div>
+
+<div id="msg5" class="message reply" style="display:none">
+    <img src="./images/adv.jpg" alt="Avatar">
+    <p>University is pretty hard some times. Whatever you wanna say, I'm here to listen</p>
+    <span class="time-right">8:01</span>
+</div>
+
+<div id="msg6" class="message user" style="display:none">
+    <img src="./images/student.jpg" alt="Avatar" class="right">
+    <p>Thank you</p>
+    <span class="time-left">8:01</span>
+</div>
+      
+<div class="box">
+
+<form class="entry">
+    <label for="entry">Enter message:</label><br>
+    <textarea name="entry_form" cols="75" rows="3" draggable="false"></textarea>
+</form>
+
+<input id="click" type="button" class="btn send" value="Send" onclick="showMsg();"></input> 
+<input id="click" type="button" class="btn reset" value="Reset" onclick="resetMsg();"></input> 
+
+</div>
+
+<script>
+    var what = 0;
+
+    function resetMsg() {
+        var tracker = 0;
+        while (tracker <= 5) {
+            switch(tracker) {
+            case 0: 
+                var gondola = "msg1"
+            break;
+
+            case 1: 
+                var gondola = "msg2"
+            break;
+
+            case 2: 
+                var gondola = "msg3"
+            break;
+
+            case 3: 
+                var gondola = "msg4"
+            break;
+
+            case 4: 
+                var gondola = "msg5"
+            break;
+
+            case 5:
+                var gondola = "msg6"
+            break;
+            }
+            var y = document.getElementById(gondola);
+            y.style.display = "none";
+            what = 0;
+            tracker++;
+        } 
+        
+    }
+
+    function showMsg() {
+        switch(what) {
+            case 0: 
+                var mess = "msg1"
+            break;
+
+            case 1: 
+                var mess = "msg2"
+            break;
+
+            case 2: 
+                var mess = "msg3"
+            break;
+
+            case 3: 
+                var mess = "msg4"
+            break;
+
+            case 4: 
+                var mess = "msg5"
+            break;
+
+            case 5:
+                var mess = "msg6"
+            break;
+        }
+        var x = document.getElementById(mess);
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+            alert(AHHHH);
+        }
+        if (what < 6) {
+            what += 1;
+        }
+    }
+
+</script>
+
+</body>
+</html>
