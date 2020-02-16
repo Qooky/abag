@@ -6,11 +6,38 @@
         * {
             box-sizing: border-box;
         }
-
+        .topnav {
+            background-color: rgb(0, 0, 0);
+            overflow: hidden;
+        }
+        
+        /* Style the links inside the navigation bar */
+        .topnav a {
+            float: left;
+            color: #f2f2f2;
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+        
+        /* Change the color of links on hover */
+        .topnav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        
+        /* Add a color to the active/current link */
+        .topnav a.active {
+            background-color: #ff8243;
+            color: white;
+        }
         .calendar {
             margin: auto;
-            width: 600px;
-            background-color:rgb(0, 255, 128);
+
+            
+            background-color:rgb(255, 187, 0);
             box-shadow: 0px 0px 15px 4px rgba(0, 0, 0, 0.2);
         }
 
@@ -21,15 +48,17 @@
             width: 100%;
             padding: 40px 30px;
             text-align: center;
-            background-color: #fa1c1c;
+            background-color: #C11818   ;
             color: #fff;
+            font-size: 25px;
         }
 
         .weekdays {
             background-color: #ffee00;
-            color: #fa1c1c;
+            color:  #C11818 ;
             padding: 7px 0;
             display: flex;
+            font-size: 30px;
         }
 
         .days {
@@ -37,6 +66,7 @@
             padding: 10px 0;
             display: flex;
             flex-wrap: wrap;
+            font-size: 30px;
         }
 
         .weekdays div,
@@ -52,11 +82,11 @@
         }
 
         .prev_date {
-            color: rgb(0, 255, 128);
+            color: rgb(255, 187, 0);
         }
 
         .today {
-           
+           color:white;
         }
 
         .days div:hover {
@@ -86,22 +116,42 @@
         .eventhead{
             background-color: #ffee00;
             color: #fa1c1c;
-            padding: 100px 10;
+            padding: 10px ;
             display: flex;
             text-align: center;
+            font-size: 30px;
         }
+
         .evecont{
-     
-            
-            background-color:white;
+            font-size: 25px;
+            padding: 10px ;
+            background-color:#C11818 ;
+            color: #FBF4F4;
             box-shadow: 0px 0px 15px 4px rgba(0, 0, 0, 0.2);
         }
 
+        .evecont1{
+            font-size: 25px;
+            padding: 10px ;
+            background-color:#C11818 ;
+            color: #FBF4F4;
+            box-shadow: 0px 0px 15px 4px rgba(0, 0, 0, 0.2);
+        }
     
     </style>
 </head>
 
 <body onload="changeDate()">
+    <div class="topnav">
+        <a href="#home">Announcements</a>
+        <a href="#get help">Talk To an Advisor</a>
+        <a href="#community">Support Groups</a>
+        <a href="#contact">Reasources</a>
+        <a class="active" href="#events">Calendar</a>
+        <a href="#learn more">About</a>
+        <a href="#virtual friends">Pals</a>
+
+    </div>
     <div class="calendar">
         <div class="month">
             <div class="prev" onclick="prevnextDate('prev')">
@@ -124,26 +174,29 @@
             <div>Fri</div>
             <div>Sat</div>
         </div>
-    
-            <input type="text" name="yes" id="t1">
-            <button onclick="events()">Add</button>
            
             <div class="days">
                 
             </div>
 
             <div class ="eventhead">
-                <label> Upcoming Events</label>
+                <label> Events this month</label>
             </div>
 
-            <div class="evecont">
-                <div class="evecont"> Dog therapy February 19 2020</div>
-                <div class="evecont"> Pizza party February 24 2020</div>
-                <div class="evecont"> Dog therapy February 28 2020</div>
-                <div class="evecont"> Dog therapy March 6 2020</div>
-
+            <div class="evecont" id="eveconts">
+                <p> Valentines day February 14 2020</p></br>
+                <p> Dog therapy February 19 2020</p></br>
+                <p> Pizza party February 24 2020</p></br>
+                <p> Party February 29 2020</p></br>
             </div>
- 
+
+            <div class="evecont1" id="eveconts1">
+                <p> Tetris Tuesday March 3 2020</p></br>
+                <p> Dog therapy March 19 2020</p></br>
+                <p> Minecraft Monday March 23 2020</p></br>
+                <p> SmashBros Saturday March 28 2020</p></br>
+            </div>
+            
         </div>
     </div>
 
@@ -174,14 +227,14 @@
             var five = "5";
 
             var number = "";
-            var eventsss = "";
+            
             
             for (x = day; x > 0; x--) {
                 number += "<div class='prev_date'>" + (prevDate - x + 1) + "</div>";
             }
 
             for (i = 0; i <= nextDate-1; i++){
-                if (i == todaynow.getDate() && d.getMonth() == todaynow.getMonth()) 
+                if (i == todaynow.getDate()-1 && d.getMonth() == todaynow.getMonth()) 
                     number += "<div class='today'>" + dates[i] + "</div>";
                     
                 else   
@@ -189,19 +242,35 @@
                     number += "<div>" + dates[i] + "</div>";
             
             }
-            //for (i = 1; i <= nextDate; i++){
-             //   if (i == todaynow.getDate() && d.getMonth() == todaynow.getMonth()) 
-              //      number += "<div class='today'>" + i + "</div>";
-                //    eventsss += "<div class='today'>" + i + "</div>";
-                //else
-                 //   number += "<div>" + i + "</div>";
-                  //  eventsss += "<div>" + i + "</div>";
-            //}
-                        
+
+
+            var feb = new Date();
+
+            if(d.getMonth() != feb.getMonth()){
+                var x = document.getElementById("eveconts");
+                x.style.display = "none";
+            } else{
+                var x = document.getElementById("eveconts");
+                x.style.display = "block";
+            }
+            
+
+            var march = new Date(2018, 2, 7);
+
+            if(d.getMonth() != march.getMonth()){
+                var x = document.getElementById("eveconts1");
+                x.style.display = "none";
+            } else{
+                var x = document.getElementById("eveconts1");
+                x.style.display = "block";
+            }
+
             document.getElementsByClassName("days")[0].innerHTML = number;
             document.getElementById("month").innerHTML = months[d.getMonth()];
             document.getElementById("date_string").innerHTML = d.toString();
+            
 
+           
         }
 
         function prevnextDate(date){
@@ -210,11 +279,13 @@
             } else if(date == "next"){
                 d.setMonth(d.getMonth() + 1);
             }
+        
             changeDate();
+
+    
+
         }
 
-        function events(eve){
-        }
     </script>
 </body>
 
