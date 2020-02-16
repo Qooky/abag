@@ -137,12 +137,14 @@ body {
 </style>
 
 <div class="topnav">
-    <a class="active" href="#home">About</a>
-    <a href="#news">Announcements</a>
-    <a href="#contact">Reasources</a>
-    <a href="#about">Pals</a>
-    <a href="#about">Support Groups</a>
-</div>
+    <a href="#home">Announcements</a>
+    <a href="#get help">Talk To an Advisor</a>
+    <a class="active" href="#community">Support Groups</a>
+    <a href="#contact">Resources</a>
+    <a href="#events">Calendar</a>
+    <a href="#learn more">About</a>
+    <a href="#virtual friends">Pals</a>
+  </div>
 
 <div id="msg1" class="message reply" style="display:none">
     <img src="./images/gondola.png" alt="Avatar">
@@ -223,8 +225,9 @@ body {
                 var gondola = "msg6"
             break;
             }
-            var x = document.getElementById(gondola);
-            x.style.display = "none";
+            var y = document.getElementById(gondola);
+            y.style.display = "none";
+            what = 0;
             tracker++;
         } 
         
@@ -261,11 +264,10 @@ body {
             x.style.display = "block";
         } else {
             x.style.display = "none";
+            alert(AHHHH);
         }
         if (what < 6) {
             what += 1;
-        } else {
-            what = 0;
         }
     }
 
