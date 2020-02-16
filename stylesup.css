@@ -14,11 +14,16 @@ body{
     background: #000000;
 }
 
+.lp-pom-text ul, li {
+  color: white;
+  }
+
 /*main description*/
 #mainDesc{
     padding: 10px 20px;
 	width: 100%;
 }
+
 
 #container {
     padding-left: 0px;
