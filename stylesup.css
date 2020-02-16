@@ -73,13 +73,21 @@ h2 {
   }
 
   /* unvisited link */
-a:link {
+  a:link {
     color: white;
   }
     
   /* mouse over link */
   a:hover {
     color: hotpink;
+  }
+
+  a:active{
+    color: white;
+  }
+
+  a:visited{
+    color:white;
   }
   
   /* Add a black background color to the top navigation */

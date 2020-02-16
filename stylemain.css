@@ -73,6 +73,15 @@ a:link {
   a:hover {
     color: hotpink;
   }
+
+  a:active{
+    color: white;
+  }
+
+  a:visited{
+    color:white;
+  }
+  
   
 
   /* Add a black background color to the top navigation */
