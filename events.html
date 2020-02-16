@@ -161,7 +161,7 @@
             Calendar</a>
         <a href="about.html">
             About</a>
-        <a href="pals.html">
+        <a href="virtualfriends.html">
             Pals</a>
 
       </div>
@@ -219,7 +219,7 @@
         
 
         function changeDate(){
-           
+            d.setDate(1);
             var day = d.getDay();
             var todaynow = new Date();
             var nextDate = new Date(
@@ -277,10 +277,10 @@
                 var x = document.getElementById("eveconts1");
                 x.style.display = "block";
             }
-
+            d.setDate(16);
             document.getElementsByClassName("days")[0].innerHTML = number;
             document.getElementById("month").innerHTML = months[d.getMonth()];
-            document.getElementById("date_string").innerHTML = feb.toString();
+            document.getElementById("date_string").innerHTML = "Today: " + feb.toString();
             
 
            
