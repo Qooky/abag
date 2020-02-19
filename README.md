@@ -12,10 +12,10 @@ Extract the "abag.zip file."
 Open the file "index.html".
 ```
 ```
-Enter the username: Nugget.
+Enter the username: Nugget
 ```
 ```
-Enter the password: epicGamer.
+Enter the password: epicGamer
 ```
 
 ## Authors
