@@ -3,10 +3,10 @@ A new communication application/website with a focus on helping students who are
 
 ## Getting Started
 ```
-Download the "abag.zip file" from the master branch.
+Download the "abag-master.zip file" from the master branch.
 ```
 ```
-Extract the "abag.zip file."
+Extract the "abag-master.zip file."
 ```
 ```
 Open the file "index.html".
