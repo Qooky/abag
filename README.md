@@ -17,10 +17,6 @@ Enter the username: Nugget
 ```
 Enter the password: epicGamer
 ```
-```
-Explore
-```
-
 ## Authors
 - Erick Calder
 - Israa Farouk
