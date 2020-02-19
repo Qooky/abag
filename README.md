@@ -3,7 +3,7 @@ A new communication application/website with a focus on helping students who are
 
 ## Getting Started
 ```
-Download the "abag.zip file" from the master branch.\
+Download the "abag.zip file" from the master branch.
 ```
 ```
 Extract the "abag.zip file."
@@ -11,6 +11,13 @@ Extract the "abag.zip file."
 ```
 Open the file "index.html".
 ```
+```
+Enter the username: Nugget.
+```
+```
+Enter the password: epicGamer.
+```
+
 ## Authors
 - Erick Calder
 - Israa Farouk
